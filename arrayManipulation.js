@@ -17,3 +17,26 @@ const processedNumbers = processArray(numbers);
 console.log(processedNumbers); 
 
 module.exports = processArray;
+
+function formatArrayStrings(stringArray, numberArray) {
+    if (stringArray.length !== numberArray.length) {
+        throw new Error("Both arrays must have the same length");
+    }
+
+    return stringArray.map((str, index) => {
+        if (numberArray[index] % 2 === 0) {
+            // Capitalize the entire string if the number is even
+            return str.toUpperCase();
+        } else {
+            // Convert the string to lowercase if the number is odd
+            return str.toLowerCase();
+        }
+    });
+}
+
+const strings = ["Hello", "World", "JavaScript", "is", "Awesome"];
+const formattedStrings = formatArrayStrings(strings, processedNumbers);
+console.log(formattedStrings);
+
+module.exports = { processArray, formatArrayStrings };
+
